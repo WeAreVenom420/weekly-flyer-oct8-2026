@@ -251,6 +251,27 @@ dialog.info .close{min-height:44px;border-radius:var(--r-chip);border:1px solid 
    Bigger hit area only — no visual restyle of the buttons themselves. */
 .warn,.sminfo{min-width:44px;min-height:44px}
 
+/* Landscape layout addition (2026-10-08, Big Mike order in #supermarket-flyer):
+   per-store columns side by side in each category section. Portrait (<768px)
+   markup and rules above are untouched — this block is ADDITIVE ONLY. */
+.lands-row{display:none}
+@media (min-width:768px){
+  /* landscape: swap the merged portrait list for per-store columns */
+  .cat .deal-list{display:none}
+  .cat .show-more[data-cat]{display:none}
+  .lands-row{display:flex;gap:var(--sp-2);overflow-x:auto;scroll-snap-type:x mandatory;
+    padding-bottom:var(--sp-2);scrollbar-width:thin}
+  .lands-col{flex:0 0 30%;min-width:230px;scroll-snap-align:start;align-self:flex-start;
+    background:var(--bg-soft);border:1px solid var(--line);border-radius:var(--r-card);
+    padding:var(--sp-2)}
+  .lands-colhead{margin-bottom:var(--sp-2);display:flex;align-items:center;gap:var(--sp-2)}
+  .lands-colhead .storechip{font-size:var(--fs-14);padding:4px 12px}
+  .lands-collist{display:grid;gap:var(--sp-2);grid-template-columns:1fr}
+  .col-more{display:block;margin:var(--sp-2) auto 0;min-height:44px;padding:var(--sp-2) var(--sp-4);
+    border-radius:var(--r-chip);border:1px solid var(--line);background:var(--surface);
+    cursor:pointer;font-weight:600}
+}
+
 </style>
 </head>
 <body>
@@ -667,6 +688,33 @@ dialog.info .close{min-height:44px;border-radius:var(--r-chip);border:1px solid 
     <button type="button" class="addbtn" aria-pressed="false" aria-label="Add Miami Beef Angus Beef Patties 32 oz or Pilgrim's Chicken Nuggets 19.2-24 oz to My List"><span aria-hidden="true">+</span></button>
   </div>
 </article>
+  </div>
+  <div class="lands-row" aria-label="Per-store columns">
+    <div class="lands-col" data-store="Publix">
+      <div class="lands-colhead"><span class="storechip st-publix">Publix</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Beef" data-lands-store="Publix" hidden></button>
+    </div>
+    <div class="lands-col" data-store="Walmart">
+      <div class="lands-colhead"><span class="storechip st-walmart">Walmart</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Beef" data-lands-store="Walmart" hidden></button>
+    </div>
+    <div class="lands-col" data-store="Sprouts">
+      <div class="lands-colhead"><span class="storechip st-sprouts">Sprouts</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Beef" data-lands-store="Sprouts" hidden></button>
+    </div>
+    <div class="lands-col" data-store="Winn-Dixie">
+      <div class="lands-colhead"><span class="storechip st-winndixie">Winn-Dixie</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Beef" data-lands-store="Winn-Dixie" hidden></button>
+    </div>
+    <div class="lands-col" data-store="Aldi">
+      <div class="lands-colhead"><span class="storechip st-aldi">Aldi</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Beef" data-lands-store="Aldi" hidden></button>
+    </div>
   </div>
   <button type="button" class="show-more" data-cat="Beef">Show 27 more</button>
 </section>
@@ -1156,6 +1204,33 @@ dialog.info .close{min-height:44px;border-radius:var(--r-chip);border:1px solid 
   </div>
 </article>
   </div>
+  <div class="lands-row" aria-label="Per-store columns">
+    <div class="lands-col" data-store="Publix">
+      <div class="lands-colhead"><span class="storechip st-publix">Publix</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Pork" data-lands-store="Publix" hidden></button>
+    </div>
+    <div class="lands-col" data-store="Walmart">
+      <div class="lands-colhead"><span class="storechip st-walmart">Walmart</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Pork" data-lands-store="Walmart" hidden></button>
+    </div>
+    <div class="lands-col" data-store="Sprouts">
+      <div class="lands-colhead"><span class="storechip st-sprouts">Sprouts</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Pork" data-lands-store="Sprouts" hidden></button>
+    </div>
+    <div class="lands-col" data-store="Winn-Dixie">
+      <div class="lands-colhead"><span class="storechip st-winndixie">Winn-Dixie</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Pork" data-lands-store="Winn-Dixie" hidden></button>
+    </div>
+    <div class="lands-col" data-store="Aldi">
+      <div class="lands-colhead"><span class="storechip st-aldi">Aldi</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Pork" data-lands-store="Aldi" hidden></button>
+    </div>
+  </div>
   <button type="button" class="show-more" data-cat="Pork">Show 39 more</button>
 </section>
 <section class="cat" id="cat-poultry" data-cat="Poultry" aria-label="Poultry deals">
@@ -1444,6 +1519,33 @@ dialog.info .close{min-height:44px;border-radius:var(--r-chip);border:1px solid 
     <button type="button" class="addbtn" aria-pressed="false" aria-label="Add Sprouts Boneless Skinless Chicken Breasts Air-chilled, no added hormones or steroids! to My List"><span aria-hidden="true">+</span></button>
   </div>
 </article>
+  </div>
+  <div class="lands-row" aria-label="Per-store columns">
+    <div class="lands-col" data-store="Publix">
+      <div class="lands-colhead"><span class="storechip st-publix">Publix</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Poultry" data-lands-store="Publix" hidden></button>
+    </div>
+    <div class="lands-col" data-store="Walmart">
+      <div class="lands-colhead"><span class="storechip st-walmart">Walmart</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Poultry" data-lands-store="Walmart" hidden></button>
+    </div>
+    <div class="lands-col" data-store="Sprouts">
+      <div class="lands-colhead"><span class="storechip st-sprouts">Sprouts</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Poultry" data-lands-store="Sprouts" hidden></button>
+    </div>
+    <div class="lands-col" data-store="Winn-Dixie">
+      <div class="lands-colhead"><span class="storechip st-winndixie">Winn-Dixie</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Poultry" data-lands-store="Winn-Dixie" hidden></button>
+    </div>
+    <div class="lands-col" data-store="Aldi">
+      <div class="lands-colhead"><span class="storechip st-aldi">Aldi</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Poultry" data-lands-store="Aldi" hidden></button>
+    </div>
   </div>
   <button type="button" class="show-more" data-cat="Poultry">Show 20 more</button>
 </section>
@@ -1833,6 +1935,33 @@ dialog.info .close{min-height:44px;border-radius:var(--r-chip);border:1px solid 
   </div>
 </article>
   </div>
+  <div class="lands-row" aria-label="Per-store columns">
+    <div class="lands-col" data-store="Publix">
+      <div class="lands-colhead"><span class="storechip st-publix">Publix</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Seafood" data-lands-store="Publix" hidden></button>
+    </div>
+    <div class="lands-col" data-store="Walmart">
+      <div class="lands-colhead"><span class="storechip st-walmart">Walmart</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Seafood" data-lands-store="Walmart" hidden></button>
+    </div>
+    <div class="lands-col" data-store="Sprouts">
+      <div class="lands-colhead"><span class="storechip st-sprouts">Sprouts</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Seafood" data-lands-store="Sprouts" hidden></button>
+    </div>
+    <div class="lands-col" data-store="Winn-Dixie">
+      <div class="lands-colhead"><span class="storechip st-winndixie">Winn-Dixie</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Seafood" data-lands-store="Winn-Dixie" hidden></button>
+    </div>
+    <div class="lands-col" data-store="Aldi">
+      <div class="lands-colhead"><span class="storechip st-aldi">Aldi</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Seafood" data-lands-store="Aldi" hidden></button>
+    </div>
+  </div>
   <button type="button" class="show-more" data-cat="Seafood">Show 29 more</button>
 </section>
 <section class="cat" id="cat-eggs" data-cat="Eggs" aria-label="Eggs deals">
@@ -1879,6 +2008,33 @@ dialog.info .close{min-height:44px;border-radius:var(--r-chip);border:1px solid 
     <button type="button" class="addbtn" aria-pressed="false" aria-label="Add Sprouts Organic Pasture Raised Eggs Large, brown, grade A, 24 ct. to My List"><span aria-hidden="true">+</span></button>
   </div>
 </article>
+  </div>
+  <div class="lands-row" aria-label="Per-store columns">
+    <div class="lands-col" data-store="Publix">
+      <div class="lands-colhead"><span class="storechip st-publix">Publix</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Eggs" data-lands-store="Publix" hidden></button>
+    </div>
+    <div class="lands-col" data-store="Walmart">
+      <div class="lands-colhead"><span class="storechip st-walmart">Walmart</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Eggs" data-lands-store="Walmart" hidden></button>
+    </div>
+    <div class="lands-col" data-store="Sprouts">
+      <div class="lands-colhead"><span class="storechip st-sprouts">Sprouts</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Eggs" data-lands-store="Sprouts" hidden></button>
+    </div>
+    <div class="lands-col" data-store="Winn-Dixie">
+      <div class="lands-colhead"><span class="storechip st-winndixie">Winn-Dixie</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Eggs" data-lands-store="Winn-Dixie" hidden></button>
+    </div>
+    <div class="lands-col" data-store="Aldi">
+      <div class="lands-colhead"><span class="storechip st-aldi">Aldi</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Eggs" data-lands-store="Aldi" hidden></button>
+    </div>
   </div>
   
 </section>
@@ -2209,6 +2365,33 @@ dialog.info .close{min-height:44px;border-radius:var(--r-chip);border:1px solid 
     <button type="button" class="addbtn" aria-pressed="false" aria-label="Add Siggi's Skyr Yogurt, Probiotic Whole-Milk Drinkable Yogurt, or Coconut Milk Yogurt Alternative, 4 to 8 oz to My List"><span aria-hidden="true">+</span></button>
   </div>
 </article>
+  </div>
+  <div class="lands-row" aria-label="Per-store columns">
+    <div class="lands-col" data-store="Publix">
+      <div class="lands-colhead"><span class="storechip st-publix">Publix</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Dairy" data-lands-store="Publix" hidden></button>
+    </div>
+    <div class="lands-col" data-store="Walmart">
+      <div class="lands-colhead"><span class="storechip st-walmart">Walmart</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Dairy" data-lands-store="Walmart" hidden></button>
+    </div>
+    <div class="lands-col" data-store="Sprouts">
+      <div class="lands-colhead"><span class="storechip st-sprouts">Sprouts</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Dairy" data-lands-store="Sprouts" hidden></button>
+    </div>
+    <div class="lands-col" data-store="Winn-Dixie">
+      <div class="lands-colhead"><span class="storechip st-winndixie">Winn-Dixie</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Dairy" data-lands-store="Winn-Dixie" hidden></button>
+    </div>
+    <div class="lands-col" data-store="Aldi">
+      <div class="lands-colhead"><span class="storechip st-aldi">Aldi</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Dairy" data-lands-store="Aldi" hidden></button>
+    </div>
   </div>
   <button type="button" class="show-more" data-cat="Dairy">Show 24 more</button>
 </section>
@@ -3106,6 +3289,33 @@ dialog.info .close{min-height:44px;border-radius:var(--r-chip);border:1px solid 
   </div>
 </article>
   </div>
+  <div class="lands-row" aria-label="Per-store columns">
+    <div class="lands-col" data-store="Publix">
+      <div class="lands-colhead"><span class="storechip st-publix">Publix</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Produce" data-lands-store="Publix" hidden></button>
+    </div>
+    <div class="lands-col" data-store="Walmart">
+      <div class="lands-colhead"><span class="storechip st-walmart">Walmart</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Produce" data-lands-store="Walmart" hidden></button>
+    </div>
+    <div class="lands-col" data-store="Sprouts">
+      <div class="lands-colhead"><span class="storechip st-sprouts">Sprouts</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Produce" data-lands-store="Sprouts" hidden></button>
+    </div>
+    <div class="lands-col" data-store="Winn-Dixie">
+      <div class="lands-colhead"><span class="storechip st-winndixie">Winn-Dixie</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Produce" data-lands-store="Winn-Dixie" hidden></button>
+    </div>
+    <div class="lands-col" data-store="Aldi">
+      <div class="lands-colhead"><span class="storechip st-aldi">Aldi</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Produce" data-lands-store="Aldi" hidden></button>
+    </div>
+  </div>
   <button type="button" class="show-more" data-cat="Produce">Show 79 more</button>
 </section>
 <section class="cat" id="cat-lamb" data-cat="Lamb" aria-label="Lamb deals">
@@ -3131,6 +3341,33 @@ dialog.info .close{min-height:44px;border-radius:var(--r-chip);border:1px solid 
     <button type="button" class="addbtn" aria-pressed="false" aria-label="Add GreenWise Lamb Round Bone Shoulder Chops to My List"><span aria-hidden="true">+</span></button>
   </div>
 </article>
+  </div>
+  <div class="lands-row" aria-label="Per-store columns">
+    <div class="lands-col" data-store="Publix">
+      <div class="lands-colhead"><span class="storechip st-publix">Publix</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Lamb" data-lands-store="Publix" hidden></button>
+    </div>
+    <div class="lands-col" data-store="Walmart">
+      <div class="lands-colhead"><span class="storechip st-walmart">Walmart</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Lamb" data-lands-store="Walmart" hidden></button>
+    </div>
+    <div class="lands-col" data-store="Sprouts">
+      <div class="lands-colhead"><span class="storechip st-sprouts">Sprouts</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Lamb" data-lands-store="Sprouts" hidden></button>
+    </div>
+    <div class="lands-col" data-store="Winn-Dixie">
+      <div class="lands-colhead"><span class="storechip st-winndixie">Winn-Dixie</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Lamb" data-lands-store="Winn-Dixie" hidden></button>
+    </div>
+    <div class="lands-col" data-store="Aldi">
+      <div class="lands-colhead"><span class="storechip st-aldi">Aldi</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Lamb" data-lands-store="Aldi" hidden></button>
+    </div>
   </div>
   
 </section>
@@ -3220,6 +3457,33 @@ dialog.info .close{min-height:44px;border-radius:var(--r-chip);border:1px solid 
   </div>
 </article>
   </div>
+  <div class="lands-row" aria-label="Per-store columns">
+    <div class="lands-col" data-store="Publix">
+      <div class="lands-colhead"><span class="storechip st-publix">Publix</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Plant-Based" data-lands-store="Publix" hidden></button>
+    </div>
+    <div class="lands-col" data-store="Walmart">
+      <div class="lands-colhead"><span class="storechip st-walmart">Walmart</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Plant-Based" data-lands-store="Walmart" hidden></button>
+    </div>
+    <div class="lands-col" data-store="Sprouts">
+      <div class="lands-colhead"><span class="storechip st-sprouts">Sprouts</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Plant-Based" data-lands-store="Sprouts" hidden></button>
+    </div>
+    <div class="lands-col" data-store="Winn-Dixie">
+      <div class="lands-colhead"><span class="storechip st-winndixie">Winn-Dixie</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Plant-Based" data-lands-store="Winn-Dixie" hidden></button>
+    </div>
+    <div class="lands-col" data-store="Aldi">
+      <div class="lands-colhead"><span class="storechip st-aldi">Aldi</span></div>
+      <div class="lands-collist"></div>
+      <button type="button" class="col-more" data-lands-cat="Plant-Based" data-lands-store="Aldi" hidden></button>
+    </div>
+  </div>
   
 </section>
   </div>
@@ -3293,7 +3557,14 @@ const DEALMAP = {};
 DEALS.forEach(d => { DEALMAP[d.i] = d; });
 let checked = new Set();
 try { checked = new Set(JSON.parse(localStorage.getItem('flyer-list-v1') || '[]')); } catch (e) { checked = new Set(); }
-const expanded = new Set(); // categories expanded past 8
+const expanded = new Set(); // categories expanded past 8 (portrait)
+const landExpanded = new Set(); // 'cat|store' keys expanded past 8 (landscape columns)
+
+/* Landscape layout (2026-10-08, Big Mike order): at >=768px each category
+   section shows the 5 stores' deals side by side in per-store columns.
+   Cards are MOVED (never duplicated) between the portrait .deal-list and the
+   landscape .lands-col lists, so counts, badges, images and handlers stay one. */
+function isLandscape() { return window.matchMedia('(min-width: 768px)').matches; }
 
 function saveChecked() {
   try { localStorage.setItem('flyer-list-v1', JSON.stringify(Array.from(checked))); } catch (e) {}
@@ -3368,21 +3639,47 @@ function sortCards(cards) {
 function applyState() {
   let total = 0;
   let anyVisible = false;
+  const land = isLandscape();
   $$('.cat').forEach(sec => {
-    const list = sec.querySelector('.deal-list');
-    const cards = Array.from(list.querySelectorAll('.card'));
+    const cat = sec.dataset.cat;
+    const cards = Array.from(sec.querySelectorAll('.card'));
     const vis = sortCards(cards.filter(matches));
-    const showAll = expanded.has(sec.dataset.cat);
-    const shown = showAll ? vis : vis.slice(0, 8);
-    cards.forEach(c => { c.hidden = true; });
-    shown.forEach(c => { c.hidden = false; });
-    // re-append in sorted order
-    vis.forEach(c => list.appendChild(c));
-    const more = sec.querySelector('.show-more');
-    if (more) {
-      if (vis.length > 8 && !showAll) { more.hidden = false; more.textContent = `Show ${vis.length - 8} more`; }
-      else if (vis.length > 8 && showAll) { more.hidden = false; more.textContent = 'Show less'; }
-      else more.hidden = true;
+    const more = sec.querySelector('.show-more[data-cat]');
+    if (!land) {
+      // portrait: merged list, unchanged behavior
+      const list = sec.querySelector('.deal-list');
+      const showAll = expanded.has(cat);
+      const shown = showAll ? vis : vis.slice(0, 8);
+      cards.forEach(c => { c.hidden = true; });
+      shown.forEach(c => { c.hidden = false; });
+      // re-append in sorted order
+      vis.forEach(c => list.appendChild(c));
+      if (more) {
+        if (vis.length > 8 && !showAll) { more.hidden = false; more.textContent = `Show ${vis.length - 8} more`; }
+        else if (vis.length > 8 && showAll) { more.hidden = false; more.textContent = 'Show less'; }
+        else more.hidden = true;
+      }
+    } else {
+      // landscape: per-store columns, each sorted, first 8 shown per column
+      STORES.forEach(st => {
+        const col = sec.querySelector('.lands-col[data-store="' + st + '"]');
+        if (!col) return;
+        const collist = col.querySelector('.lands-collist');
+        const key = cat + '|' + st;
+        const colVis = vis.filter(c => DEALMAP[c.dataset.idx].store === st);
+        const showAll = landExpanded.has(key);
+        const shown = showAll ? colVis : colVis.slice(0, 8);
+        colVis.forEach(c => { collist.appendChild(c); c.hidden = !shown.includes(c); });
+        col.hidden = colVis.length === 0;
+        const cm = col.querySelector('.col-more');
+        if (cm) {
+          if (colVis.length > 8 && !showAll) { cm.hidden = false; cm.textContent = `Show ${colVis.length - 8} more`; }
+          else if (colVis.length > 8 && showAll) { cm.hidden = false; cm.textContent = 'Show less'; }
+          else cm.hidden = true;
+        }
+      });
+      cards.forEach(c => { if (!vis.includes(c)) c.hidden = true; });
+      if (more) more.hidden = true;
     }
     sec.querySelector('[data-catcount]').textContent = vis.length + (vis.length === 1 ? ' deal' : ' deals');
     sec.hidden = vis.length === 0;
@@ -3494,7 +3791,7 @@ function syncChips() {
 function resetFilters() {
   Object.assign(state, { q: '', store: 'All', cat: 'All', deal: 'all', frozen: false, under5: false, sort: 'unit' });
   $('#search').value = '';
-  expanded.clear();
+  expanded.clear(); landExpanded.clear();
   syncChips(); applyState();
 }
 
@@ -3544,13 +3841,24 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   $('#clearFilters').addEventListener('click', resetFilters);
 
-  // show more / less
+  // show more / less (portrait merged lists)
   $$('.show-more[data-cat]').forEach(btn => btn.addEventListener('click', () => {
     const c = btn.dataset.cat;
     if (expanded.has(c)) expanded.delete(c); else expanded.add(c);
     applyState();
     if (expanded.has(c)) document.getElementById('cat-' + c.toLowerCase().replace(' ', '-')).scrollIntoView({ block: 'start' });
   }));
+
+  // show more / less (landscape per-store columns)
+  $$('.col-more').forEach(btn => btn.addEventListener('click', () => {
+    const key = btn.dataset.landsCat + '|' + btn.dataset.landsStore;
+    if (landExpanded.has(key)) landExpanded.delete(key); else landExpanded.add(key);
+    applyState();
+  }));
+
+  // crossing the portrait/landscape breakpoint re-lays the cards out
+  const landMq = window.matchMedia('(min-width: 768px)');
+  landMq.addEventListener('change', () => { expanded.clear(); landExpanded.clear(); applyState(); });
 
   // tap-to-check cards + real add buttons
   $$('.card').forEach(card => {
