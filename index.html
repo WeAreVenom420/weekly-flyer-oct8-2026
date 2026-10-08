@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
 <title>Weekly Grocery Deals · Oct 8–14, 2026</title>
 <meta name="description" content="Weekly grocery deals across Publix, Walmart, Sprouts, Winn-Dixie and Aldi — Oct 8–14, 2026.">
 <style>
@@ -22,22 +23,8 @@
   --st-winndixie-ink:#a11a1a; --st-winndixie-bg:#fdeeee;
   --st-aldi-ink:#7a4d00; --st-aldi-bg:#fff3da;
 }
-@media (prefers-color-scheme:dark){
-  :root{
-    --bg:#121214; --bg-soft:#17171b; --surface:#1d1d22; --text:#f2f2f2; --muted:#c4c4c4;
-    --line:#2f2f36; --accent:#8fdcab; --accent-ink:#052b15; --danger:#ff9e94;
-    --danger-soft:#3d1512; --chip-bg:#2b2b32; --chip-ink:#f2f2f2;
-    --focus:#8ab4f8; --thumb:#26262c;
-    --sh-sm:0 1px 2px rgba(0,0,0,.5); --sh-md:0 6px 18px rgba(0,0,0,.5);
-    --st-publix-ink:#a9e4c0; --st-publix-bg:#0f2f1d;
-    --st-walmart-ink:#b9cdf7; --st-walmart-bg:#16294d;
-    --st-sprouts-ink:#cfe8a8; --st-sprouts-bg:#22300f;
-    --st-winndixie-ink:#f5b8b8; --st-winndixie-bg:#3d1414;
-    --st-aldi-ink:#f2cd7e; --st-aldi-bg:#3a2a08;
-  }
-}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;color-scheme:light}
 body{margin:0;background:var(--bg);color:var(--text);
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   font-size:var(--fs-16);line-height:1.45;-webkit-text-size-adjust:100%}
@@ -118,10 +105,6 @@ main{max-width:1280px;margin:0 auto;padding:var(--sp-3) var(--sp-3) 110px}
 .b-soon{background:#fff3d6;color:#7a4d00}
 .b-exp{background:#e8e8e8;color:#444}
 .b-more{background:transparent;border:1px dashed var(--muted);color:var(--muted)}
-@media (prefers-color-scheme:dark){
-  .b-soon{background:#3a2a08;color:#f2cd7e}
-  .b-exp{background:#3a3a40;color:#e2e2e2}
-}
 .warn{width:22px;height:22px;border-radius:50%;border:2px solid var(--danger);color:var(--danger);
   background:none;font-weight:800;font-size:var(--fs-12);line-height:1;cursor:pointer}
 .tert{font-size:var(--fs-12);color:var(--muted);margin-top:var(--sp-1)}
@@ -137,13 +120,11 @@ main{max-width:1280px;margin:0 auto;padding:var(--sp-3) var(--sp-3) 110px}
 .savepill{display:inline-block;background:var(--danger-soft);color:var(--danger);border-radius:var(--r-chip);
   padding:2px 8px;font-size:var(--fs-12);font-weight:700;margin-left:4px;font-variant-numeric:tabular-nums;white-space:nowrap}
 .card.hot .savepill{background:var(--danger);color:#fff}
-@media (prefers-color-scheme:dark){.card.hot .savepill{background:var(--danger);color:#1a0505}}
 .nopill{display:inline-block;background:var(--chip-bg);color:var(--chip-ink);border-radius:var(--r-chip);
   padding:2px 8px;font-size:var(--fs-12);font-weight:600}
 .addbtn{min-width:44px;min-height:44px;border-radius:var(--r-chip);border:1px solid var(--line);
   background:var(--chip-bg);color:var(--chip-ink);font-size:var(--fs-20);cursor:pointer;line-height:1}
 .addbtn[aria-pressed="true"]{background:var(--danger);border-color:var(--danger);color:#fff}
-@media (prefers-color-scheme:dark){.addbtn[aria-pressed="true"]{color:#1a0505}}
 .show-more{display:block;margin:var(--sp-3) auto 0;min-height:44px;padding:var(--sp-2) var(--sp-4);
   border-radius:var(--r-chip);border:1px solid var(--line);background:var(--surface);cursor:pointer;font-weight:600}
 
@@ -166,7 +147,6 @@ main{max-width:1280px;margin:0 auto;padding:var(--sp-3) var(--sp-3) 110px}
   font-variant-numeric:tabular-nums}
 .cmp-table th{background:var(--bg-soft)}
 .cmp-table tr.best td{background:#e9f7ee;font-weight:700}
-@media (prefers-color-scheme:dark){.cmp-table tr.best td{background:#0f2f1d}}
 .besttag{display:inline-block;background:var(--accent);color:var(--accent-ink);border-radius:var(--r-chip);
   padding:0 8px;font-size:var(--fs-12);margin-left:6px}
 
